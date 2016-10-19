@@ -4,14 +4,10 @@
 
 "use strict";
 
-var mongoose = require('mongoose');
+var tags = require('../config/local_config').tags;
 
-var tagSchema = mongoose.Schema({
+var listTags = function (callback) {
+  callback(null, tags);
+};
 
-    platform: {type: String, enum: ['ios', 'android'], required: true},
-    tag: {type: String, required: true},
-    user: String
-
-});
-
-mongoose.model('Tag', tagSchema);
+module.exports = listTags;

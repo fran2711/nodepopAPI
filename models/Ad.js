@@ -7,24 +7,24 @@
 var mongoose = require('mongoose');
 
 // Creo el esquema del anuncio
-var anuncioSchema = mongoose.Schema({
+var adSchema = mongoose.Schema({
 
-    name: String,
-    venta: Boolean,
-    precio: Number,
-    foto: String,
-    tags: [String],
+    name: {type: String, required: true},
+    sell: {type: Boolean, required: true},
+    price: {type: Number, required: true},
+    photo: String,
+    tags: [String]
 
 });
 
 // Creo un listado con los filtros que se le pueden pasar
-anuncioSchema.statics.list = function (filter, sort, limit, skip, callback) {
+adSchema.statics.list = function (filter, sort, limit, skip, callback) {
 
-    var query = Anuncio.find(filter);
+    var query = Ad.find(filter);
     query.sort(sort);
     query.limit(limit);
     query.skip(skip);
     return query.exec(callback);
 };
 
-var Anuncio = mongoose.model('Anuncio', anuncioSchema);
+var Ad = mongoose.model('Ad', adSchema);
