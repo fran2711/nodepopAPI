@@ -18,12 +18,12 @@ var anuncioSchema = mongoose.Schema({
 });
 
 // Creo un listado con los filtros que se le pueden pasar
-anuncioSchema.statics.list = function (filter, start, limit, sort, callback) {
+anuncioSchema.statics.list = function (filter, sort, limit, skip, callback) {
 
     var query = Anuncio.find(filter);
-    query.skip(start);
-    query.limit(limit);
     query.sort(sort);
+    query.limit(limit);
+    query.skip(skip);
     return query.exec(callback);
 };
 
