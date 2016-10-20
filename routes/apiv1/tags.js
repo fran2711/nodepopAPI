@@ -7,8 +7,19 @@
 var express = require('express');
 var router = express.Router();
 
-var Tag = require('../config/local_config').tags;
+var Tag = require('../../models/Tag');
+
+router.get('/', function (req, res) {
 
 
+    Tag(function (err, tags) {
+
+        if (err){
+            return err;
+        }
+        res.json({success: true, tags: tags});
+    });
+
+});
 
 module.exports = router;
