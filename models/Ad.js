@@ -4,10 +4,10 @@
 
 "use strict";
 
-var mongoose = require('mongoose');
+let mongoose = require('mongoose');
 
 // Creo el esquema del anuncio
-var adSchema = mongoose.Schema({
+let adSchema = mongoose.Schema({
 
     name: {type: String, required: true},
     sell: {type: Boolean, required: true},
@@ -20,11 +20,11 @@ var adSchema = mongoose.Schema({
 // Creo un listado con los filtros que se le pueden pasar
 adSchema.statics.list = function (filter, sort, limit, skip, callback) {
 
-    var query = Ad.find(filter);
+    let query = Ad.find(filter);
     query.sort(sort);
     query.limit(limit);
     query.skip(skip);
     return query.exec(callback);
 };
 
-var Ad = mongoose.model('Ad', adSchema);
+let Ad = mongoose.model('Ad', adSchema);

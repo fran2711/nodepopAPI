@@ -8,6 +8,11 @@ module.exports = {
 
     platform: ['ios', 'android'],
     tags: ['work', 'lifestyle', 'motor', 'mobile'],
-    languages: ['en', 'es']
+    languages: ['en', 'es'],
+
+    jwt: {
+        secret: 'fspsefinds1235fdsfsacc14453tfdv34'
+    }
+
 
 };

@@ -4,10 +4,10 @@
 
 "use strict";
 
-var mongoose = require('mongoose');
-var platforms = require('../config/local_config').platform;
+let mongoose = require('mongoose');
+let platforms = require('../config/local_config').platform;
 
-var tokenSchema = mongoose.Schema({
+let tokenSchema = mongoose.Schema({
 
     platform: {type: String, enum: platforms, required: true},
     token: {type: String, required: true},

@@ -4,10 +4,10 @@
 
 "use strict";
 
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
 
-var Tag = require('../../models/Tag');
+let Tag = require('../../models/Tag');
 
 router.get('/', function (req, res) {
 

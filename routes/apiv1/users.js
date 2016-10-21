@@ -4,23 +4,30 @@
 
 "use strict";
 
-var express = require('express');
-var router = express.Router();
-var mongoose = require('mongoose');
+let express = require('express');
+let router = express.Router();
+let mongoose = require('mongoose');
+let jwt = require('jsonwebtoken');
+let jwtAuth = require('../../lib/jwtAuth');
+let sha = require('sha256');
 
-var User = mongoose.model('User');
 
-router.post('/', function (req, res, next) {
+let User = mongoose.model('User');
 
-    var user = new User(req.body);
+router.post('/authenticate', function (req, res) {
 
-    user.save(function (err, userSaved) {
-       if (err){
-           return next(err);
-       }
+    if (!req.body.email || !req.body.password) {
+        return error(new Error(''));
+    }
 
-       res.json({success: true, user: userSaved});
+    let email = req.body.email;
+    let password = req.body.password;
+
+
+    User.findOne({email: email}, function (err, usuario) {
+
     });
+
 
 });
 

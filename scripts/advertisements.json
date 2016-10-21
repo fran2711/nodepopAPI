@@ -1,0 +1,37 @@
+{
+  "ads": [
+    {
+      "name": "Bicicleta",
+      "sell": true,
+      "price": 230.15,
+      "photo": "",
+      "tags": ["lifestyle", "motor"]
+    },
+
+    {
+      "name": "iPhone 3GS",
+      "sell": false,
+      "price": 50.00,
+      "photo": "iphone.png",
+      "tags": [ "lifestyle", "mobile"]
+    },
+
+    {
+      "name": "iPad Air 2",
+      "sell": false,
+      "price": 250.00,
+      "photo": "ipadAir2",
+      "tags": ["lifestyle", "mobile"]
+    },
+
+    {
+      "name": "",
+      "sell": "",
+      "price": "",
+      "photo": "",
+      "tags": ["", ""]
+    }
+
+
+  ]
+}

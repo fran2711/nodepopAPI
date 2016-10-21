@@ -4,9 +4,9 @@
 
 "use strict";
 
-var tags = require('../config/local_config').tags;
+let tags = require('../config/local_config').tags;
 
-var listTags = function (callback) {
+let listTags = function (callback) {
   callback(null, tags);
 };
 
