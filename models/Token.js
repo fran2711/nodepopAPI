@@ -15,4 +15,4 @@ let tokenSchema = mongoose.Schema({
 
 });
 
-var Token = mongoose.model('Token', tokenSchema);
+let Token = mongoose.model('Token', tokenSchema);

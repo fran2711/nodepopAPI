@@ -7,7 +7,6 @@
 module.exports = {
 
     platform: ['ios', 'android'],
-    tags: ['work', 'lifestyle', 'motor', 'mobile'],
     languages: ['en', 'es'],
 
     jwt: {

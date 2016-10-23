@@ -13,18 +13,29 @@ let adSchema = mongoose.Schema({
     sell: {type: Boolean, required: true},
     price: {type: Number, required: true},
     photo: String,
-    tags: [String]
+    tags: {type: String, enum:
+        ['work', 'lifestyle', 'motor', 'mobile']
+    }
 
 });
 
 // Creo un listado con los filtros que se le pueden pasar
-adSchema.statics.list = function (filter, sort, limit, skip, callback) {
+adSchema.statics.list = function (filter, sort, limit, skip, fields) {
 
-    let query = Ad.find(filter);
-    query.sort(sort);
-    query.limit(limit);
-    query.skip(skip);
-    return query.exec(callback);
+    return new Promise(function (resolve, reject) {
+        let query = Ad.find(filter);
+        query.sort(sort);
+        query.limit(limit);
+        query.skip(skip);
+        query.select(fields);
+        query.exec(function (err, result) {
+            if (err){
+                return reject(err);
+            }
+            resolve(result);
+        });
+    });
 };
+
 
 let Ad = mongoose.model('Ad', adSchema);
