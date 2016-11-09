@@ -2,14 +2,15 @@
  * Created by Fran on 20/10/16.
  */
 
+
 "use strict";
 
 let client = require('mongodb').MongoClient;
 let fs = require('fs');
 let mongoDir = require('../config/local_config').mongoDir;
 
-
 function install() {
+    
     
     console.log('Executing installation');
     
@@ -24,7 +25,7 @@ function install() {
         console.log('Starting deleting database ---------------');
         console.log('Deleting advertisements collection');
         
-        db.collection('advertisements').drop(function (err, status) {
+        db.collection('advertisements').remove(function (err, status) {
             if (err) {
                 console.log('Error deleting advertisements collection');
             }
@@ -32,7 +33,7 @@ function install() {
             
             
             console.log('Deleting users collection');
-            db.collection('users').drop(function (err, status) {
+            db.collection('users').remove(function (err, status) {
                 if (err) {
                     console.log('Error deleting users collection');
                 }
@@ -40,7 +41,7 @@ function install() {
                 
                 
                 console.log('Deleting tokens collection');
-                db.collection('tokens').drop(function (err, status) {
+                db.collection('tokens').remove(function (err, status) {
                     if (err) {
                         console.log('Error deleting tokens collection');
                     }
@@ -68,7 +69,7 @@ function insertData(db) {
         json = JSON.parse(data);
         
         console.log('Adding commercials');
-        db.collection('commercials').insert(json).then(function () {
+        db.collection('Commercials').insert(json).then(function () {
             console.log('Commercials added');
         }).catch(next);
     });
