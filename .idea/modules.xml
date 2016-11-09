@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/nodepop.iml" filepath="$PROJECT_DIR$/.idea/nodepop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../nodepop/.idea/nodepop.iml" filepath="$PROJECT_DIR$/../nodepop/.idea/nodepop.iml" />
     </modules>
   </component>
 </project>

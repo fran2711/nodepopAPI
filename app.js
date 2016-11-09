@@ -7,15 +7,19 @@ let logger = require('morgan');
 let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
 
+let i18n = require('i18n');
+
+
+
+// Connection to the database
+let db = require('./lib/dbConnection');
+
+// Models load
+require('./models/User');
+require('./models/PushToken');
+require('./models/Commercial');
 
 let app = express();
-
-require('./lib/dbConnection');
-
-// Load the models
-require('./models/User');
-require('./models/Ad');
-require('./models/Token');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,19 +33,27 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// registrar lenguajes
+i18n.configure({
+    directory: __dirname + '/locales',
+    defaultLocale: 'en',
+    register: global
+});
+app.use(i18n.init);
+
 // Index route
 app.use('/', require('./routes/index'));
 
 // API routes
 app.use('/apiv1/users', require('./routes/apiv1/users'));
-app.use('/apiv1/tokens', require('./routes/apiv1/tokens'));
-app.use('/apiv1/tokens', require('./routes/apiv1/ads'));
+app.use('/apiv1/tokens', require('./routes/apiv1/pushtokens'));
+app.use('/apiv1/tokens', require('./routes/apiv1/commercials'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  let err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handlers
@@ -54,7 +66,7 @@ if (app.get('env') === 'development') {
         
         // si es una petición de API devolvemos JSON, sino una página
         if (isAPI(req)) {
-            res.json({success: false, error: err});
+            res.json({success: false,  error: { code: err.code || err.status || 500, message: err.message, err: err }});
         } else {
             res.render('error', {
                 message: err.message,
@@ -72,7 +84,7 @@ app.use(function(err, req, res, next) {
     
     // si es una petición de API devolvemos JSON, sino una página
     if (isAPI(req)) {
-        res.json({success: false, error: err});
+        res.json({success: false, error: { code: err.code || err.status || 500, message: err.message, err: err }});
     } else {
         res.render('error', {
             message: err.message,
@@ -82,7 +94,7 @@ app.use(function(err, req, res, next) {
     
 });
 
-
+// Function for the error response in case is requested in the API
 function isAPI(req) {
     return req.originalUrl.indexOf('/api') === 0;
 }

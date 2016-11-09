@@ -6,85 +6,87 @@
 
 let client = require('mongodb').MongoClient;
 let fs = require('fs');
+let mongoDir = require('../config/local_config').mongoDir;
+
 
 function install() {
-    console.log('Installing database');
     
-    client.connect('mongodb://localhost:27017/nodepop', function (err, db) {
-       
-        if (err) throw err;
-        console.log('Connected to Database');
+    console.log('Executing installation');
+    
+    client.connect(mongoDir, function (err, db) {
         
-        console.log('Starting deletion -----------------------');
-        console.log('Deleting advertisement collection');
-        db.collection('ads').drop(function (err, status) {
-    
+        if (err){
+            return err;
+        }
+        
+        console.log('Connected to database');
+        
+        console.log('Starting deleting database ---------------');
+        console.log('Deleting advertisements collection');
+        
+        db.collection('advertisements').drop(function (err, status) {
             if (err) {
-                console.log('Error deleting advertisement collection');
+                console.log('Error deleting advertisements collection');
             }
-            console.log('Advertisement collection deleted. Status:' + status);
-    
-            console.log('Deleting users collection')
+            console.log('Advertisements collection deleted. Status: ' + status);
+            
+            
+            console.log('Deleting users collection');
             db.collection('users').drop(function (err, status) {
                 if (err) {
-                    console.log('Error deleting user collection');
+                    console.log('Error deleting users collection');
                 }
-                console.log('User collection deleted. Status:' + status);
-        
-        
+                console.log('Users collection deleted. Status: ' + status);
+                
+                
                 console.log('Deleting tokens collection');
                 db.collection('tokens').drop(function (err, status) {
-            
                     if (err) {
                         console.log('Error deleting tokens collection');
                     }
-                    console.log('Tokens collection deleted. Status:' + status);
-            
-            
-                    console.log('Starting insertion -----------------------');
-            
+                    console.log('Tokens collection deleted. Status: ' + status);
+                    
+                    console.log('Finished deleting database ---------------');
+                    
                     insertData(db);
-            
                 });
-        
             });
-    
         });
-        
     });
 }
-
 
 function insertData(db) {
     
-    fs.readFile(__dirname + 'advertisements.json', 'utf8', function (err, data) {
-       
-        if (err) throw err;
-        console.log('Advertisements loaded');
+    let json;
+    
+    fs.readFile(__dirname + '/commercials.json', 'utf8', function (err, data, next) {
+        if (err){
+            return err;
+        }
+        console.log('Commercials loaded');
         
-        let json = JSON.parse(data);
+        json = JSON.parse(data);
         
-        db.collection('advertisements').insert(json, function (err) {
-            if (err) throw err;
-            console.log('Advertisements added');
-        });
-        
+        console.log('Adding commercials');
+        db.collection('commercials').insert(json).then(function () {
+            console.log('Commercials added');
+        }).catch(next);
     });
     
-    fs.readFile(__dirname + 'user.json', 'utf8', function (err, data) {
-    
-        if (err) throw err;
+    fs.readFile(__dirname + '/user.json', 'utf8', function (err, data, next) {
+        if (err){
+            return err;
+        }
         console.log('Users loaded');
-    
-        let json = JSON.parse(data);
-    
-        db.collection('user').insert(json, function (err) {
-            if (err) throw err;
+        
+        json = JSON.parse(data);
+        
+        console.log('Adding users');
+        db.collection('users').insert(json).then(function () {
             console.log('Users added');
-        });
-    
+        }).catch(next);
     });
+    
 }
-
 
 install();
