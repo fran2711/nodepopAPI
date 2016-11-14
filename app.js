@@ -9,8 +9,6 @@ let bodyParser = require('body-parser');
 
 let i18n = require('i18n');
 
-
-
 // Connection to the database
 let db = require('./lib/dbConnection');
 
@@ -47,7 +45,7 @@ app.use('/', require('./routes/index'));
 // API routes
 app.use('/apiv1/users', require('./routes/apiv1/users'));
 app.use('/apiv1/tokens', require('./routes/apiv1/pushtokens'));
-app.use('/apiv1/tokens', require('./routes/apiv1/commercials'));
+app.use('/apiv1/commercials', require('./routes/apiv1/commercials'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
