@@ -9,7 +9,7 @@ module.exports = {
     platform: ['ios', 'android'],
     languages: ['en', 'es'],
     
-    mongoDir: 'mongodb://localhost:27017/nodepop',
+    mongoDir: 'mongodb://nodepopuser:danutoelputo1234@27017/nodepopdb',
     
     jwt: {
         secret: 'fspsefinds1235fdsfsacc14453tfdv34',
