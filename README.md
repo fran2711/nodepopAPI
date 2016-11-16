@@ -10,9 +10,15 @@ Use **npm install** to download all the *node.js* dependencies.
 
     npm run installDB
 
+## Start in debug mode
+    
+    npm start
+
+
 ## Start
     
     npm start
+    
 
 ## JSHint & JSCS
 
