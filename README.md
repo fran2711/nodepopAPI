@@ -54,7 +54,7 @@ i.e. Accept-Language: es
       }
     }
 
-### POST /usuarios/register
+### POST /users/register
 
 **Input Body**: { nombre, email, clave}
 
@@ -65,7 +65,7 @@ i.e. Accept-Language: es
       "message": "user created!"
     }
 
-### POST /usuarios/authenticate
+### POST /users/authenticate
 
 **Input Body**: { email, clave}
 
@@ -76,7 +76,7 @@ i.e. Accept-Language: es
       "token": "..."
     }
 
-### GET /anuncios
+### GET /commercials
 
 **Input Query**: 
 
@@ -89,7 +89,8 @@ venta: {bool} filter by venta or not
 precio: {range} filter by price range, examples 10-90, -90, 10-   
 nombre: {string} filter names beginning with the string  
 
-Input query example: ?start=0&limit=2&sort=precio&includeTotal=true&tag=mobile&venta=true&precio=-90&nombre=bi
+Input query example: 
+?start=0&limit=2&sort=precio&includeTotal=true&tag=mobile&venta=true&precio=-90&nombre=bi
 
 **Result:** 
 
@@ -115,7 +116,7 @@ Input query example: ?start=0&limit=2&sort=precio&includeTotal=true&tag=mobile&v
     }
 
 
-### GET /anuncios/tags
+### GET /commercials/tags
 
 Return the list of available tags for the resource anuncios.
 
