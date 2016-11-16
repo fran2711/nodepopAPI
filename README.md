@@ -30,7 +30,7 @@ Use **npm install** to download all the *node.js* dependencies.
 ### Base Path
 
 The API can be used with the path: 
-[API V1](/apiv1/anuncios)
+[API V1](/apiv1/commercials)
 
 ### Security
 
