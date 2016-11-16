@@ -12,7 +12,7 @@ Use **npm install** to download all the *node.js* dependencies.
 
 ## Start in debug mode
     
-    npm debug
+    npm run debug
 
 
 ## Start
