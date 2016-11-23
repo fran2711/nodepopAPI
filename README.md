@@ -3,10 +3,24 @@ Practica Node.JS, Express, MongoDB Master Keepcoding IV
 
 It´s an **API** that works in **iOS** and **Android**.
 
+
+# Práctica DevOps
+
+Static server and request for the Nodepop API:
+
+## URL
+
+    http://nodepop.franlucenadejuan.com
+
+You can also visit my web:
+
+
+    http://franlucenadejuan.com
+
 You can download or clone it.
 Use **npm install** to download all the *node.js* dependencies.
 
-### Init database
+## Init database
 
     npm run installDB
 
