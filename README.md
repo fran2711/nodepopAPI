@@ -1,8 +1,4 @@
 # Nodepop
-Practica Node.JS, Express, MongoDB Master Keepcoding IV
-
-It´s an **API** that works in **iOS** and **Android**.
-
 
 # Práctica DevOps
 
@@ -16,6 +12,13 @@ You can also visit my web:
 
 
     http://franlucenadejuan.com
+
+
+
+
+# Practica Node.JS, Express, MongoDB Master Keepcoding IV
+
+It´s an **API** that works in **iOS** and **Android**.
 
 You can download or clone it.
 Use **npm install** to download all the *node.js* dependencies.
