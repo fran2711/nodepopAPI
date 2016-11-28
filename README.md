@@ -6,12 +6,12 @@ Static server and request for the Nodepop API:
 
 ## URL
 
-    http://nodepop.franlucenadejuan.com
+    https://nodepop.franlucenadejuan.com
 
 You can also visit my web:
 
 
-    http://franlucenadejuan.com
+    https://franlucenadejuan.com
 
 
 
