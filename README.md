@@ -1,18 +1,35 @@
 # Nodepop
-Practica Node.JS, Express, MongoDB Master Keepcoding IV
+
+# Práctica DevOps
+
+Static server and request for the Nodepop API:
+
+## URL
+
+    https://nodepop.franlucenadejuan.com
+
+You can also visit my web:
+
+
+    https://franlucenadejuan.com
+
+
+
+
+# Practica Node.JS, Express, MongoDB Master Keepcoding IV
 
 It´s an **API** that works in **iOS** and **Android**.
 
 You can download or clone it.
 Use **npm install** to download all the *node.js* dependencies.
 
-### Init database
+## Init database
 
     npm run installDB
 
 ## Start in debug mode
     
-    npm debug
+    npm run debug
 
 
 ## Start
@@ -30,7 +47,7 @@ Use **npm install** to download all the *node.js* dependencies.
 ### Base Path
 
 The API can be used with the path: 
-[API V1](/apiv1/anuncios)
+[API V1](/apiv1/commercials)
 
 ### Security
 
