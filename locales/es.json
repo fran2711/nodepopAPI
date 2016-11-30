@@ -6,5 +6,6 @@
 	"users_user_created": "usuario creado!",
 	"users_user_not_found": "Usuario no encontrado",
 	"users_wrong_password": "clave erronea",
-	"generic": "generic error: {{message}}"
+	"generic": "generic error: {{message}}",
+	"user_wrong_password": "user_wrong_password"
 }
